@@ -1,23 +1,223 @@
-var started = false;
-function startMusic() {
-    if (started) return;
-    started = true;
-    audio.muted = false;
-    audio.play().catch(function () {});
-    document.removeEventListener('touchstart', startMusic);
-    document.removeEventListener('click', startMusic);
-}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>个人主页</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-// 如果之前已经点过播放，这次自动接着播
-if (localStorage.getItem('bgm_playing') === '1') {
-    started = true;
-    audio.play().catch(function () {});
-}
+    <!-- 背景音乐 (隐藏) -->
+    <audio id="bgm" src="assets/audio/bgm.mp3" loop></audio>
 
-document.addEventListener('touchstart', startMusic);
-document.addEventListener('click', startMusic);
+    <!-- 全局容器 -->
+    <div class="app-container">
 
-window.addEventListener('beforeunload', function () {
-    localStorage.setItem('bgm_time', audio.currentTime);
-    localStorage.setItem('bgm_playing', started ? '1' : '0');
-});
+        <!-- ================= 页面 1：个人主页 ================= -->
+        <div id="page-home" class="page active">
+            <div class="header-placeholder"></div> <!-- 顶部留白 -->
+            
+            <div class="profile-section">
+                <!-- 头像 替换 src -->
+                <div class="avatar"><img src="assets/img/avatar.jpg" alt="头像"></div>
+                <h1 class="username">【替换：李白/懒惰】</h1>
+                <p class="handle">@pupywq-</p>
+                <p class="bio">【替换：待在我身边就已经很幸福了不是吗】</p>
+                <p class="location">ip属地：【替换：余烬女团】</p>
+                <div class="slogan">Stay with me</div>
+            </div>
+
+            <div class="grid-section">
+                <!-- 左下方四个图标 -->
+                <div class="icon-grid">
+                    <div class="icon-item">
+                        <img src="assets/img/icon1.jpg" alt="三恋">
+                        <span>【替换：三恋】</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="assets/img/icon2.jpg" alt="玉娱">
+                        <span>【替换：玉娱】</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="assets/img/icon3.jpg" alt="纯连">
+                        <span>【替换：纯连】</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="assets/img/icon4.jpg" alt="哄睡">
+                        <span>【替换：哄睡】</span>
+                    </div>
+                </div>
+                <!-- 右下方小卡片 -->
+                <div class="info-card">
+                    <div class="card-row">
+                        <span>【替换：07 双 entp】</span>
+                        <div class="toggle-btn"></div>
+                    </div>
+                    <div class="card-row">
+                        <span>【替换：轻浮系】</span>
+                        <div class="toggle-btn"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 页面 2：须知 ================= -->
+        <div id="page-info" class="page">
+            <div class="header-top">05:20 ❤</div>
+            
+            <div class="info-cards-container">
+                <!-- 左侧卡片 -->
+                <div class="info-card-left">
+                    <div class="card-header">⌂ Homepage <span>...</span></div>
+                    <div class="avatar-small"><img src="assets/img/avatar.jpg" alt="头像"></div>
+                    <h3>【替换：懒惰】</h3>
+                    <p>【替换：别为了我流泪】</p>
+                    <p>【替换：眼泪要留给重要的人】</p>
+                    <div class="card-footer">
+                        <span>【替换：公开可见】</span>
+                        <span>❤ ↗</span>
+                    </div>
+                </div>
+                
+                <!-- 右侧卡片 -->
+                <div class="info-card-right">
+                    <div class="card-header">@风格一览 <span>🔍</span></div>
+                    <div class="style-list">
+                        <div class="style-item">
+                            <strong>主风格</strong>
+                            <p>【替换：日常白话 暧昧拉扯 中高恋 中高擦 挑逗调情 钓系恶趣味】</p>
+                        </div>
+                        <div class="style-item">
+                            <strong>副风格</strong>
+                            <p>【替换：伪下狗1 热脸贱 直球引诱 乘胜追击 动物塑】</p>
+                        </div>
+                        <div class="style-item">
+                            <strong>小概率</strong>
+                            <p>【替换：触发纯爱隐藏副本】</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 下方两个食用须知卡片 -->
+            <div class="plate-card">
+                <div class="plate-header">
+                    <span>● 食用须知</span>
+                    <span>The third plate</span>
+                </div>
+                <div class="plate-row"><span class="tag">须知</span>【替换：这里是一句比较长的须知文案】</div>
+                <div class="plate-row"><span class="tag">须知</span>【替换：这里是一句比较长的须知文案】</div>
+                <div class="plate-row"><span class="tag">须知</span>【替换：这里是一句比较长的须知文案】</div>
+                <div class="plate-footer">
+                    <span>【替换：05-20 余烬】</span>
+                    <span>最近上线：一小时前</span>
+                </div>
+            </div>
+            
+            <div class="plate-card">
+                <div class="plate-header">
+                    <span>● 食用须知</span>
+                    <span>The third plate</span>
+                </div>
+                <div class="plate-row"><span class="tag">须知</span>【替换：这里是一句比较长的须知文案】</div>
+                <div class="plate-row"><span class="tag">须知</span>【替换：这里是一句比较长的须知文案】</div>
+                <div class="plate-row"><span class="tag">须知</span>【替换：这里是一句比较长的须知文案】</div>
+                <div class="plate-footer">
+                    <span>【替换：05-20 余烬】</span>
+                    <span>最近上线：一小时前</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 页面 3：资料 ================= -->
+        <div id="page-data" class="page">
+            <div class="header-top-flex">
+                <span>‹</span>
+                <h2>Memory</h2>
+                <span>🔍 +</span>
+            </div>
+
+            <!-- 图片展示区 -->
+            <div class="memory-showcase">
+                <div class="memory-img-wrapper">
+                    <img src="assets/img/memory.jpg" alt="Memory">
+                </div>
+                <p class="memory-count">3 memories</p>
+                <div class="pagination">
+                    <span>‹</span>
+                    <span>资料展示</span>
+                    <span>›</span>
+                </div>
+                <div class="dots">
+                    <span></span><span class="active"></span><span></span><span></span>
+                </div>
+                <div class="action-buttons">
+                    <span>↓ 导出</span>
+                    <span>↑ 导入</span>
+                </div>
+            </div>
+
+            <!-- 功能按钮区 -->
+            <div class="action-grid">
+                <div class="action-btn">
+                    <h3>话术</h3>
+                    <p>SCRIPT</p>
+                </div>
+                <div class="action-btn">
+                    <h3>板评</h3>
+                    <p>REVIEW</p>
+                </div>
+                <div class="action-btn">
+                    <h3>卡面</h3>
+                    <p>CARD</p>
+                </div>
+            </div>
+
+            <!-- 标签栏 -->
+            <div class="tabs">
+                <span>关系</span>
+                <span>背景</span>
+                <span>剧情</span>
+                <span>发展</span>
+                <span>▲ 纪念日</span>
+            </div>
+
+            <!-- 列表项 -->
+            <div class="list-item">
+                <div class="list-left">
+                    <h3>话术</h3>
+                    <p>单内风格</p>
+                </div>
+                <div class="list-right">
+                    <p>【替换：这里是一句你想放的文案】</p>
+                    <p>进度 5/21</p>
+                </div>
+                <div class="delete-icon">🗑</div>
+            </div>
+            
+            <div class="list-item">
+                <div class="list-left">
+                    <h3>板评</h3>
+                    <p>与你有关</p>
+                </div>
+                <div class="list-right">
+                    <p>【替换：这里是一句你想放的文案】</p>
+                    <p>进度 13/21</p>
+                </div>
+                <div class="delete-icon">🗑</div>
+            </div>
+        </div>
+
+        <!-- ================= 底部导航栏 ================= -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" data-target="page-home">主页</div>
+            <div class="nav-item" data-target="page-info">须知</div>
+            <div class="nav-item" data-target="page-data">资料</div>
+        </nav>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
